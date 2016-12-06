@@ -1,8 +1,8 @@
 
 
 You must install:
-django
-python
+django, running 1.10
+python, running 3.5
 pillow
 django-registration-redux
 
