@@ -9,5 +9,5 @@ django-registration-redux
 
 
 TODO
-Fix submit button on registration form
-validations on forms aren't working
+implement search feature
+fix created by field to select logged in user
