@@ -1,0 +1,25 @@
+	{% extends 'website/base.html' %}
+	{% load staticfiles %}
+
+	{% block title_block %}
+		Index
+	{% endblock %}
+	
+	{% block body_block %}
+	
+	<div class="jumbotron">
+		<h1 class="display-3">Welcome!</h1>
+        <img src={% static "images/logo.png" %} alt="logo">
+
+		{% if user.is_authenticated %}
+			<p class="lead">Start volunteering today, {{ user.username }}.</p>
+            <p class="lead">Do good. Feel good.</p>
+		{% else %}
+			<a href={% url 'registration_register' %} type="button" class="btn btn-success">Start volunteering today</button></a>
+		{% endif %}
+        
+ 	</div>
+								
+	{% endblock %}
+
+

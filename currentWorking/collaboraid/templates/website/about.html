@@ -1,0 +1,29 @@
+	{% extends 'website/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		About
+	{% endblock %}
+	
+	{% block body_block %}
+        <div>
+	        <h1 class="page-header">About Page</h1>	
+		</div>	
+
+        <blockquote class="blockquote">
+        <p class="mb-0">"The smallest act of kindness is worth more than the grandest intentions."</p>
+        <footer class="blockquote-footer">Oscar Wilde</footer>
+        </blockquote>
+
+        <h5>Let this famous person persuade you</h5>
+        <img src={% static "images/Hugh-Jackman.jpg" %} alt="Handsome Hugh" width="450" style="fixed-right">
+
+        <p>
+        CollaborAid, as you might guess, stems from the words "collaborate" and "aid". Our founder Hugh Jackman believes strongly that a person's greatest accomplishments are those that benefit their community. He started CollaborAid to bring the people of Central Texas together and generate exponential good. At many benefits, this handsome fellow uses his rugged good looks to bring in those dollars.</p>
+
+        <p>
+        The folks behind CollaborAid know that bringing together in volunteerism can change lives. Our volunteers are awesome. It's simple. They sprinkle fairy dust and poof new life into existence, one filled with possibilities and progress. The outcomes can be long-lasting and life-changing. 
+        </p>
+
+        <p>Join us. We have cookies.</p>
+
+	{% endblock %}
