@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.core.urlresolvers import reverse
 from website.models import UserProfile, AnEvent
-from website.forms import UserProfileForm, AnEventForm, SearchForm
+from website.forms import UserProfileForm, AnEventForm
 from registration.backends.simple.views import RegistrationView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
