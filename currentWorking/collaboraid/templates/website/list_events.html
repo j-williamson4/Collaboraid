@@ -5,27 +5,26 @@
 {% block title %}Events{% endblock %}
 
 {% block body_block %}
+<div class ="body-block">
 <h1>Events</h1>
 
 <div class="panel">
-	{% if events_list %}
+	{% if event_list %}
 	<div class="panel-heading">
 		<!-- Display search results in an ordered list -->
 		<div class="panel-body">
 			<div class="list-group">
-				{% for event in events_list %}
+				{% for event in event_list %}
 				<div class="list-group-item">
+                    <h3><a href="{% url 'event_detail' event.id %}">{{event.event_name}}</a></h3>
+                    <p>Venue : {{event.venue}}</p>
+                    <p>Date : {{event.date}}</p>
+                    
 					{% if event.picture %}
-					<img width="64" height="64" src="{{ MEDIA_URL}}{{event.picture}}"/>
+					<img width="256" height="256" src="{{ MEDIA_URL}}{{event.picture}}"/>
 					{% else %}
-					<img width="64" height="64" src="http://combonetwork.com/img/empty_profile.png"/>
+					<img width="256" height="256" src="http://www.artconnect.com/assets/default/default_event_list-af5a65d1bb7f64798e5dd5b6e3e3d091.png"/>
 					{% endif %}
-
-					<h4 class="list-group-item-heading">
-						<a href="{% url 'profile' event.event_name %}">{{ event.event_name }}</a>
-					</h4>
-
-
 
 				</div>
 				{% endfor %}
@@ -35,5 +34,6 @@
 	{% else %}
 		<p>There are no events currently.</p>
 	{% endif %}
+</div>
 </div>
 {% endblock %}

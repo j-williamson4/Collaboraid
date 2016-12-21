@@ -1,13 +1,21 @@
+To run the CollaborAid website, do the following.
 
+You must have the following installed:
+Django v1.10
+Python v3.5
 
-You must install:
-django, running 1.10
-python, running 3.5
+And the following packages installed as well:
 pillow
 django-registration-redux
 
+If packages are missing, simply run the following commands:
+pip install pillow
+pip install django-registration-redux
 
 
-TODO
-implement search feature
-fix created by field to select logged in user
+Group 9 members:
+ Williamson, John
+ Gan, Denise
+ Fuller, Katherine
+ Geldenhuys, Elize
+ Hodges, Taylor

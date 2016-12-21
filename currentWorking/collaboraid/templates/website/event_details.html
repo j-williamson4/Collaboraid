@@ -1,0 +1,37 @@
+{% extends 'website/base_bootstrap.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Event Detail{% endblock %}
+
+{% block body_block %}
+<div class ="body-block">
+			<h2>{{event.event_name}}</h2>
+            <p></p>
+			Date: {{event.date}}<br />
+        	Venue : {{event.venue}}<br />
+            Start time : {{event.start_time}}<br />
+            End time : {{event.end_time}}<br />
+            Description : {{event.description}}<br />
+                
+            <p clss="msg">{% if request.GET.msg %} {{request.GET.msg }} {% endif %}</p>
+            {% if not joined %}
+                <a href="{% url 'event_join' event.id %}" class="btn join">Yes, Attend</a>
+            {% else %}
+                <a href="{% url 'event_cancel' event.id %}" class="btn join">No, Not Attend</a>
+            {% endif %}
+
+            <p></p>
+
+            <div class="user">
+                <h4>Volunteers Needed: {{event.volunteer_num}}</h4>
+                <h3>Users Attending:</h3>
+                <ol>
+                    {% for volunteer in event.volunteer.all %}
+                        <li> {{ volunteer.username }} </li>
+                    {% endfor %}
+                </ol>
+            </div>
+		</div>
+</div>
+{% endblock %}

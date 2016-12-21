@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load staticfiles %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{% url 'about' %}">About</a> {% if user.is_authenticated %}
+                        <li> <a class="navbar-brand" href="{% url 'profile' user.username %}">Profile</a></li>
+                        <li> <a class="navbar-brand" href="{% url 'list_profiles' %}">Volunteer Profiles</a></li>
+                        <li> <a href="{% url 'create_event' %}">Create Event</a></li>
+                        <li> <a href="{% url 'list_events' %}">Event List</a></li>
+                        <li> <a href="{% url 'user_events' request.user.id %}">My Events</a></li>
+                        <li> <a href="{% url 'auth_logout' %}?next=/website/"> Logout  </a></li> {% else %}
+                        <li> <a class="navbar-brand" href="{% url 'registration_register' %}">Register</a></li>
+                        <li> <a class="navbar-brand" href="{% url 'auth_login' %}">Login</a> </li>{% endif %}
+                </ul>
+            </div>
+            <form method="GET" action="{% url 'search' %}" class="navbar-form">
+                <div class="form-group search">
+                    <input name="q" type="text" class="form-control" id="q" placeholder="Search events..." value='{{ request.GET.q }}' />
+                    <input type="submit" value="Search" class="btn btn-primary">
+                </div>
+            </form>
+
+
+
+
+        </div>
+    </nav>
+
+
+
+    {% block title %}{% endblock %} 
+    
+    {% block content %}
+
+    <div class ="body-block" style="width:800px; margin:0 auto;">
+        <div class="row">
+        <div class="col-sm-12">
+        <h3>Searched user database for "{{ query }}" :</h3>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {% if res %}
+                    {% for i in res %}
+                    <p><a href="{% url 'profile' i.user.username %}">{{ i.user.username }}</a></p>
+                        {% if i.picture %}
+                        <img width="128" height="128" src="{{ MEDIA_URL}}{{i.picture}}"/>
+                        {% else %}
+                        <img width="128" height="128" src="http://combonetwork.com/img/empty_profile.png"/>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    No results found.
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+
+    <!-- Footer -->
+    <footer class="navbar-fixed-bottom">
+
+        <a href="#"> <img src={% static "images/facebook.png" %} alt="facebook" class="icons"></a>
+        <a href="#"> <img src={% static "images/twitter.png" %} alt="facebook" class="icons"></a>
+        <a href="#"> <img src={% static "images/rss.png" %} alt="facebook" class="icons"></a>
+        <a href="#"> <img src={% static "images/youtube.png" %} alt="facebook" class="icons"></a>
+
+        <h3>CollaborAid</h3>
+
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="http://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{% static " js/website-ajax.js " %}"></script>
+    <script src="{% static " js/website-jquery.js " %}"></script>
+</body>
+
+</html>

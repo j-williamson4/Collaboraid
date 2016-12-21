@@ -1,0 +1,37 @@
+{% extends 'website/base_bootstrap.html' %}
+
+{% load staticfiles %}
+
+{% block title %}My Events{% endblock %}
+
+{% block body_block %}
+<div class ="body-block">
+<h1>My Events</h1>
+
+{% if not event_list %}
+You have no events.
+{% else %}
+ <br>
+    <h3>{{user.username}} is attending: </h3>
+    
+    <hr>
+     
+    {% for event in event_list %}
+        <h4><a href="{% url 'event_detail' event.id %}">{{event.event_name}}</a></h4>
+        <p>{{event.description | truncatewords:30}}</p>
+        <p>Venue : {{event.venue}}</p>
+        <p>Date : {{event.date}}</p>
+        
+        {% if event.picture %}
+            <img width="64" height="64" src="{{ MEDIA_URL}}{{event.picture}}"/>
+        {% else %}
+            <img width="64" height="64" src="http://www.artconnect.com/assets/default/default_event_list-af5a65d1bb7f64798e5dd5b6e3e3d091.png"/>
+        {% endif %}
+    
+        <hr>
+    
+     {% endfor %}
+     
+{% endif %}
+</div>
+{% endblock %}

@@ -6,10 +6,12 @@
 {% endblock %}
 
 {% block body_block %}
+<div class ="body-block">
 	<h1>Registration - Step 2</h1>
 	<form method="post" action="." enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" value="Submit" />
 	</form>
+</div>
 {% endblock %}

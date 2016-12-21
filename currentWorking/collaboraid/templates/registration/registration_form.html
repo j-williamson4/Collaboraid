@@ -1,6 +1,6 @@
 {% extends "website/base.html" %}
 {% block body_block %}
-
+<div class ="body-block">
 <h2 class="form-signin-heading">Sign Up Here</h2>
 
 <form role="form"  method="post" action=".">
@@ -15,6 +15,7 @@
         </p>
     <p class="required"><label class="required" for="id_password1">Password:</label>
         <input class="form-control" id="id_password1" name="password1" type="password" />
+        <span class="helptext">Password must contain characters and numbers.</span>
     </p>
     <p class="required"><label class="required" for="id_password2">Password confirmation:</label>
         <input class="form-control" id="id_password2" name="password2" type="password" />
@@ -24,4 +25,5 @@
 </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
+</div>
 {% endblock %}
