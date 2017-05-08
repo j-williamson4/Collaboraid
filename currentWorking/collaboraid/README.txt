@@ -12,6 +12,9 @@ If packages are missing, simply run the following commands:
 pip install pillow
 pip install django-registration-redux
 
+Finally: run the command 
+ python manage.py runserver
+To start the server up, site is hosted on localhost:8000
 
 Group 9 members:
  Williamson, John
